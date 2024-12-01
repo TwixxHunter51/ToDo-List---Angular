@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class ToDoComponent implements OnInit{
-  tasks: { name: string; originalName: string; expiry: number; editing: boolean; expiresIn?:number; }[] = [];
+  tasks: { name: string; originalName: string; expiry: number; editing: boolean; expiresIn?:number;expires?:boolean }[] = [];
   ctasks: { name: string; originalName: string; expiry: number;editing: boolean; }[] = [];  
   etasks: { name: string; originalName: string; expiry: number;editing: boolean; }[] = [];  
   completedCount: number = 0;
@@ -34,11 +34,17 @@ export class ToDoComponent implements OnInit{
      
       if (newTask !== '') {
         const taskToAdd = { name: newTask, originalName:newTask,expiry : expiryTime,editing:false,
-          expiresIn: expiryTime  };
+          expiresIn: expiryTime, expires:true  };
+      if(!this.tasks.find(t=> t.name.toLowerCase()==taskToAdd.name.toLowerCase())){
         this.tasks.push(taskToAdd);
         this.tasks.sort((a, b) => a.expiry - b.expiry);
         if(taskToAdd.expiry>0)
-        {this.startCountdownForTask(taskToAdd);}
+        {this.startCountdownForTask(taskToAdd);} 
+        this.taskForm.reset();
+      }
+      else{
+        this.toastr.error('Task with same name exists already.')
+      }
     }
   }
   }
@@ -47,7 +53,7 @@ export class ToDoComponent implements OnInit{
     const interval = setInterval(() => {
       const remainingTime = taskExpiresAt - Math.floor(Date.now() / 1000); 
   
-      if (remainingTime <= 0) {
+      if (remainingTime <= 0 && this.tasks.find(t => t.name=task.name)) {
         clearInterval(interval);
         task.expiresIn = 0;
         this.moveToExpiry(task, this.tasks.indexOf(task));
@@ -56,26 +62,22 @@ export class ToDoComponent implements OnInit{
       }
     }, 1000);
   }
-  
-  
-  setExpiryTimeout(task: { name: string; originalName: string; expiry: number; editing: boolean; }) {
-    setTimeout(() => {
-      this.moveToExpiry(task, this.tasks.indexOf(task));
-    }, task.expiry * 1000);
-  }
-  
 
-  moveToCompleted(task: { name: string; originalName: string;expiry: number; editing: boolean; }, index: number) {
+  moveToCompleted(task: { name: string; originalName: string;expiry: number; editing: boolean; expires?:boolean}, index: number) {
+    task.expires=false;
     this.ctasks.unshift(task);
     this.tasks.splice(index, 1);
     this.updateCompletedCount();
     this.toastr.success('Task completed successfully!', 'Congratulations!');
   }
-  moveToExpiry(task: { name: string; originalName: string;expiry: number; editing: boolean; }, index: number) {
-    this.etasks.unshift(task);
-    this.tasks.splice(index, 1);
-    this.updateExpiredCount();
-    this.toastr.warning('Task expired!', 'Warning!');
+  moveToExpiry(task: { name: string; originalName: string;expiry: number; editing: boolean; expires:boolean}, index: number) {
+    if(this.tasks.find(t=> t.name==task.name) && task.expires)
+    {
+      this.etasks.unshift(task);
+      this.tasks.splice(index, 1);
+      this.updateExpiredCount();
+      this.toastr.warning('Task expired!', 'Warning!');
+    }
   }
 
   deleteTask(index: number) {

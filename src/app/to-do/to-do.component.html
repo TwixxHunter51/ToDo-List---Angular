@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="taskForm">
+    <form [formGroup]="taskForm" style="width:80%;align-items: center;display: flex;">
       <app-input [taskForm]="taskForm" (taskaddition)="addTask()"></app-input>
     </form>  
     <h2>Active Tasks:</h2>
