@@ -11,18 +11,40 @@
     color: #830707;
     margin-bottom: 10px;
   }
+
   .add-task {
-    margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    justify-content: space-between;
   }
-  .add-task input[type="text"] {
+  .add-task input {
+    width: 100%; /* By default, make inputs take full width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex-grow:1;
+  }
+  .mat-icon.icon {
+    cursor: pointer;
+    font-size: 24px;
+    align-self: center; /* Align the icon with the inputs */
+  }
+  /* .add-task input[type="text"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     flex-grow: 1;
-  }
+  } */
+  @media (min-width: 768px) {
+    .add-task input {
+      width: 45%; /* On larger screens (like laptops), make the input fields 45% wide */
+    }
   
+    .mat-icon.icon {
+      align-self: flex-start; /* Align the icon to the left of the input fields */
+    }
+  }
   .task-list {
     list-style: none;
     padding: 0;
