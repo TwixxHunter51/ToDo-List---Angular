@@ -1,0 +1,8 @@
+<h1><b>To-Do List</b></h1>
+  <div class="add-task">
+    <form [formGroup]='taskForm' class="add-task">
+      <input type="text" formControlName="task" placeholder="Enter task">
+      <input type="number" formControlName="expiry" placeholder="Expiry time (in seconds)">
+      <mat-icon class="icon" (click)="addTask(taskForm)" matTooltip="Add Task">add_box</mat-icon>
+    </form>    
+  </div>

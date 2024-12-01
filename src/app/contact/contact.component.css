@@ -1,0 +1,149 @@
+/* Container for the contact component */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7fa;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  /* Header Style */
+  .contact-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Details */
+  .contact-details p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  /* Specific email styling */
+  .email {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #007BFF;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
+  
+  /* Button Container */
+  .cta-container {
+    margin-top: 30px;
+  }
+  
+  /* Call to Action Button */
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Button Hover Effect */
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .contact-container h1 {
+      font-size: 2rem;
+    }
+  
+    .contact-details p {
+      font-size: 1rem;
+    }
+  
+    .cta-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+/* Container for the contact component */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7fa;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+  }
+  
+  /* Header Style */
+  .contact-container h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Contact Details */
+  .contact-details p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  /* Specific email styling */
+  .email {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #007BFF;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
+  
+  /* Button Container */
+  .cta-container {
+    margin-top: 30px;
+  }
+  
+  /* Call to Action Button */
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Button Hover Effect */
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .contact-container h1 {
+      font-size: 2rem;
+    }
+  
+    .contact-details p {
+      font-size: 1rem;
+    }
+  
+    .cta-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+    
